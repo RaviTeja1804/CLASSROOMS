@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.homepageadmin {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.navbar-home {
+    display: flex;
+    background-color: black;
+    height: 12%;
+    align-items: center;
+}
+
+.name {
+    color: white;
+    margin-left: 20px;
+    font-size: 38px;
+    font-weight: 600;
+}
+
+.hello {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    width: 200px;
+    margin-left: 20px;
+}
+
+.logout-btn {
+    color: white;
+    background-color: black;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.listing {
+    display: flex;
+    height: 7%;
+    background-color: #e7e7e7;
+    align-items: center;
+}
+
+.listing button {
+    border: none;
+    background-color: #e7e7e7;
+    font-size: 20px;
+    margin-left: 30px;
+    height: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #454545;
+    cursor: pointer;
+    font-weight: 535;
+}
+
+.listing button:active {
+    background-color: #c4c4c4;
+}
+
+.bookclass {
+    width: 30%;
+    margin-left: 35%;
+}
+
+.classroom-card p strong {
+    color: rgb(147, 5, 47);
+}
+
+.oneoffour1 {
+    background-color: #4158D0;
+    background-image: linear-gradient(45deg, #9eacf5 0%, #f9b1f4 28%, #f9d89a 66%, #ffffff 100%);
+    height: 81%;
+}
+
+.oneoffour2 {
+    height: 81%;
+    background-image: linear-gradient(45deg, #f89afc 0%, #aae9fa 60%, #e1fbbd 90%);
+}
+
+.oneoffour3 {
+    height: 81%;
+    background-image: linear-gradient(to top, #faedc4 0%, #fbc3fb 100%);
+}
+
+.oneoffour4 {
+    height: 81%;
+    background-image: linear-gradient(to top, #fce3d8 0%, #ace0f9 100%);
+}
+
+.oneoffour5 {
+    height: 81%;
+    background-image: linear-gradient(180deg, #a8d0f6 25%, #f9eb8f 100%);
+}
+
+.booknow-content {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.classroomimg {
+    width: 40px;
+    height: 40px;
+    margin-right: -30px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.listingitemimg {
+    display: flex;
+    align-items: center;
+}
+
+.listingitemimg button:active {
+    background-color: #e7e7e7;
+}
+
+.personimg {
+    width: 40px;
+    height: 40px;
+    margin-right: -60px;
+}
+
+.helloimg {
+    display: flex;
+    align-items: center;
+    margin-left: 32%;
+}
+
+.logoutimg {
+    margin-left: 12%;
+    display: flex;
+    align-items: center;
+}
+
+.logout {
+    margin-right: -5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}

@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loginsignup {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    background-color: black;
+    height: 12%;
+    font-size: 40px;
+    font-weight: 500;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name {
+    color: white;
+    margin-left: 20px;
+}
+
+.login-btn {
+    background-color: rgb(4, 172, 219);
+    border: none;
+    color: white;
+    margin-right: 30px;
+    height: 45px;
+    width: 140px;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.register {
+    height: 80%;
+    background-image: url('../../Components/assets/class2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    display: flex;
+}
+
+.big-register-box {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 35%;
+    height: 80%;
+    margin-top: 5%;
+    margin-left: 50%;
+}
+
+.register-now {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.register-box {
+    width: 90%;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+    font-size: 15px;
+    padding-left: 10px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.register-btn {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 15px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    background-color: rgb(201, 0, 0);
+    color: white;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background-color: rgb(179, 0, 0);
+}
+
+.log {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 20px;
+}
+
+.log2 {
+    width: 20%;
+    margin-left: 5%;
+    height: 40px;
+    background-color: #d1d1d1;
+    border: 1px solid #999;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.log1 {
+    width: 20%;
+    margin-left: 5%;
+    height: 40px;
+    background-color: rgb(4, 172, 219);
+    border: 1px solid #999;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 3%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    height: 8%;
+}
+
+.footer button {
+    border: none;
+    color: orange;
+    background-color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.footer button:hover {
+    color: yellow;
+    text-decoration: overline;
+}
+
+hr {
+    border: 0; 
+    border-top: 1px solid #808080;
+    margin: 10px auto;
+    width: 60%;
+}
+
+.just {
+    margin-top: 20px;
+}
+
+.now {
+    height: 55%;
+}
+
+.loginimgdiv {
+    display: flex;
+    align-items: center;
+    z-index: 0;
+}
+
+.loginimg {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-right: -45px;
+    z-index: 1;
+}
