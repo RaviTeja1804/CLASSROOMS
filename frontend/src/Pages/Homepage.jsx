@@ -55,10 +55,10 @@ function Homepage() {
     })
   }
 
-  const addToBooking = () => {
+  const addToBooking = async () => {
       if(localStorage.getItem('auth_token'))
       {
-        fetch('http://localhost:4000/teacher/addBooking', {
+        await fetch('http://localhost:4000/teacher/addBooking', {
           method: 'POST',
           headers: {
             Accept: 'application/form-data',
@@ -69,6 +69,7 @@ function Homepage() {
         })
         .then((response) => response.json())
         .then((data) => {
+          localStorage.setItem("data_msg",data.message)
           console.log(data)
           window.alert(data.message)
         })

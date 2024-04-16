@@ -39,7 +39,27 @@ class teacherController{
         return res;
     }
 
-    async addBooking(req, res) {        
+    async addBooking(req, res) { 
+        
+        const holidays = [
+            {name: "Republic Day", date: "2024-01-26"},
+            {name: "Holi", date: "2024-03-25"},
+            {name: "Good Friday", date: "2024-03-29"},
+            {name: "Id-ul-Fitr", date: "2024-04-11"},
+            {name: "Ram Navmi", date: "2024-04-17"},
+            {name: "Mahavir Jayanti", date: "2024-04-21"},
+            {name: "Buddha Purnima", date: "2024-05-23"},
+            {name: "Id-ul-Zuha (Bakrid)", date: "2024-06-17"},
+            {name: "Muharram", date: "2024-07-17"},
+            {name: "Independence Day / Parsi New Year’s Day / Nauraj", date: "2024-08-15"},
+            {name: "Janamashtami (Vaishnva)", date: "2024-08-26"},
+            {name: "Milad-un-Nabi or Id-e-Milad (Birthday of Prophet Mohammad)", date: "2024-09-16"},
+            {name: "Mahatma Gandhi’s Birthday", date: "2024-10-02"},
+            {name: "Dussehra", date: "2024-10-12"},
+            {name: "Diwali", date: "2024-10-31"},
+            {name: "Christmas", date: "2024-12-25"}
+        ];        
+        
         const newBooking = new bookingModel({
             date:req.body.date,
             start_time:req.body.start_time,
@@ -53,6 +73,18 @@ class teacherController{
 
         const newBookingForTeacher = req.body;
 
+        const isHoliday = holidays.some(holiday => holiday.date === req.body.date.substring(0,10));
+        if (isHoliday) {
+            console.log("Booking date falls on a holiday");
+            return res.json({ message: "Booking date falls on a holiday. Please choose another date." });
+        }
+
+        if(req.body.start_time > req.body.end_time)
+        {
+            console.log("Start time cannot be greater than End time")
+            return res.json({ message: "Start time cannot be greater than End time"})
+        }
+
         const existingBookings = await bookingModel.find({
             classroom: newBookingForTeacher.classroom,
             date: newBookingForTeacher.date,
@@ -63,11 +95,6 @@ class teacherController{
         });
 
         const existingRooms = await classroomModel.find({name:newBookingForTeacher.classroom})
-
-        if(newBookingForTeacher.start_time > newBookingForTeacher.end_time)
-        {
-            return res.json({ message: "Start time cannot be greater than End time"})
-        }
 
         if(existingRooms.length==0)
         {
@@ -84,7 +111,7 @@ class teacherController{
         req.teacher.allBookings.push(newBookingForTeacher)
         await req.teacher.save();
         await newBooking.save();
-        return res.json({ message: "Added successfully" });
+        return res.json({message: "Added successfully"});
     }
 }
 

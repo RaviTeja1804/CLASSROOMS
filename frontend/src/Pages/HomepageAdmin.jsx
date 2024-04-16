@@ -103,6 +103,13 @@ function HomepageAdmin() {
         }
     }, [whatToDo]);
 
+    const [allBookings, setAllBookings] = useState([]);
+    useEffect(() => {
+        if (whatToDo === 'allBookings') {
+            getBookings();
+        }
+    }, [whatToDo]);
+
     const getTeachers = () => {
         fetch('http://localhost:4000/teacher/getTeachers', {
             method: 'GET',
@@ -128,6 +135,31 @@ function HomepageAdmin() {
             setAllFeedbacks(data)
         })
     }
+
+    const getBookings = () => {
+        fetch('http://localhost:4000/booking/getBookings', {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json'
+              }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            setAllBookings(data)
+        })
+    }
+
+
+    // const [allBookingsName, setAllBookingsName] = useState([])
+    // const getBookingsName = (name) => {
+    //     getBookings();
+    //     let filteredBookings = allBookings.filter(booking => booking.name === 'name');
+    //     return filteredBookings
+    // }
+
+    // const handleSubmit = () => {
+    //     setAllBookingsName(getBookingsName(teacherName));
+    // };
 
     if(whatToDo === 'addclassroom')
     {
@@ -244,6 +276,67 @@ function HomepageAdmin() {
             content = (<h3>Loading</h3>)
         }
     }
+    else if(whatToDo === "allBookings")
+    {
+        if(allBookings.length>0)
+        {
+            content = (
+                <div className="home-content">
+                    {allBookings.sort((a, b) => new Date(a.date) - new Date(b.date)).map((booking, index) => {
+                        const date = new Date(booking.date).toLocaleDateString(); 
+                        return (
+                        <div key={index} className="classroom-card">
+                            <p><strong>Name: </strong> {booking.name}</p>
+                            <p><strong>Classroom: </strong> {booking.classroom}</p>
+                            <p><strong>Date: </strong> {date}</p>
+                            <p><strong>Start time: </strong> {booking.start_time}</p>
+                            <p><strong>End time: </strong> {booking.end_time}</p>
+                        </div>
+                        );
+                    })}
+                </div>
+            )
+        }
+        else
+        {
+            content = (<h3>Loading</h3>)
+        }
+    }
+    // else if(whatToDo === "bookingsName")
+    // {
+    //     let allBookingsName
+    //     if(allBookingsName.length>0)
+    //     {
+    //         content = (
+    //             <div>
+    //                 <div>
+    //                     <input placeholder='Enter teacher name'></input>
+    //                     <button type='submit' onClick={handleSubmit}>Submit</button>
+    //                 </div>
+    //                 <div className="home-content">
+    //                     {allBookingsName.sort((a, b) => new Date(a.date) - new Date(b.date)).map((booking, index) => {
+    //                         const date = new Date(booking.date).toLocaleDateString(); 
+    //                         return (
+    //                         <div key={index} className="classroom-card">
+    //                             <p><strong>Name: </strong> {booking.name}</p>
+    //                             <p><strong>Classroom: </strong> {booking.classroom}</p>
+    //                             <p><strong>Date: </strong> {date}</p>
+    //                             <p><strong>Start time: </strong> {booking.start_time}</p>
+    //                             <p><strong>End time: </strong> {booking.end_time}</p>
+    //                         </div>
+    //                         );
+    //                     })}
+    //                 </div>
+    //             </div>
+    //         )
+    //     }
+    //     else
+    //     {
+    //         content = (
+    //             <div>Loading</div>
+    //         )
+    //     }
+    // }
     
 
   return (
@@ -286,6 +379,14 @@ function HomepageAdmin() {
             <img src={feedbackImg} className='classroomimg'  onClick={() => {setWhatToDo('allfeedbacks');getTeachers();setAtTop('All Feedbacks');setStylist('oneoffour5')}}/>
             <button className="allfeedbacks" onClick={() => {setWhatToDo('allfeedbacks');getTeachers();setAtTop('All Feedbacks');setStylist('oneoffour5')}}>All Feedbacks</button>  
         </div>
+
+        <div className='listingitemimg'>
+            <button className="allfeedbacks" onClick={() => {setWhatToDo('allBookings');getBookings();setAtTop('All Bookings');setStylist('oneoffour5')}}>All Bookings</button>  
+        </div>
+
+        {/* <div className='listingitemimg'>
+            <button className="allfeedbacks" onClick={() => {setWhatToDo('bookingsName');getBookingsName();setAtTop('Bookings by name');setStylist('oneoffour5')}}>Bookings</button>  
+        </div> */}
       </div>
 
       <div className={stylist}>
